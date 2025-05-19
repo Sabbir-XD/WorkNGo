@@ -8,14 +8,16 @@ import {
   FaTasks,
   FaUser,
   FaUserPlus,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, handleSignOut } = useContext(AuthContext);
-  console.log(user);
+
   const navLinkStyle = ({ isActive }) =>
-    `flex items-center gap-2 px-4 py-2 rounded-full transition ${
+    `flex items-center gap-2 px-4 py-2 rounded transition ${
       isActive
         ? "bg-green-100 text-green-700 font-medium"
         : "text-gray-600 hover:bg-green-50 hover:text-green-600"
@@ -92,13 +94,35 @@ const Navbar = () => {
       </div>
       <div className="navbar-end gap-2">
         {user ? (
-          <button
-            to="/login"
-            onClick={handleSignOut}
-            className="btn btn-sm md:btn-md bg-gradient-to-r from-green-500 to-green-600 text-white border-none hover:from-green-600 hover:to-green-700"
-          >
-            <FaUser className="mr-1" /> Sign out
-          </button>
+          <div className="flex items-center gap-4">
+            <div>
+              <div
+                className="avatar my-anchor-element"
+                data-tooltip-id="user-tooltip"
+                data-tooltip-content={user.displayName || user.email}
+                data-tooltip-place="top"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    src={
+                      user.photoURL ||
+                      "https://i.ibb.co/4j3qYyX/default-user.png"
+                    }
+                    alt="User Profile"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </div>
+
+              <Tooltip id="user-tooltip" />
+            </div>
+            <button
+              onClick={handleSignOut}
+              className="btn btn-sm md:btn-md bg-gradient-to-r from-green-500 to-green-600 text-white border-none hover:from-green-600 hover:to-green-700 flex items-center gap-1"
+            >
+              <FaSignOutAlt /> Log out
+            </button>
+          </div>
         ) : (
           <>
             <Link

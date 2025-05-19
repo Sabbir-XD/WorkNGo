@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import {
   FaUser,
   FaLock,
@@ -15,15 +15,19 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 const Signup = () => {
-  const { handleCreateUser, handleGoogleLogin } = useContext(AuthContext);
+  const { handleCreateUser, handleGoogleLogin, handleUpdateProfile, setUser } =
+    useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const { email, password } = Object.fromEntries(formData.entries());
+    const { email, password, photo, name } = Object.fromEntries(
+      formData.entries()
+    );
 
     // Use Password Validation
     const error = validatePassword(password);
@@ -37,13 +41,15 @@ const Signup = () => {
         const user = userCredential.user;
         console.log(user);
 
+        handleUpdateProfile({ displayName: name, photoURL: photo });
+        setUser({ ...user, displayName: name, photoURL: photo });
+
         Swal.fire({
           title: "Account Created Successfully!",
           icon: "success",
           draggable: true,
         });
-        navigate("/");
-        form.reset();
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         console.error(error.message);
@@ -130,7 +136,7 @@ const Signup = () => {
                 <FaCamera className="absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500" />
                 <input
                   type="text"
-                  name="photoURL"
+                  name="photo"
                   className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
                   placeholder="https://example.com/your-photo.jpg"
                 />

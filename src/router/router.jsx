@@ -7,6 +7,7 @@ import BrowseTasks from "../Pages/BrowseTasks";
 import MyTask from "../Pages/MyTask";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
+import PrivetRoute from "./PrivetRoute";
 
 export const router = createBrowserRouter([
   {
@@ -19,16 +20,24 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path : "/add-task",
-        element: <AddTask/>
+        path: "/add-task",
+        element: (
+          <PrivetRoute>
+            <AddTask />
+          </PrivetRoute>
+        ),
       },
       {
         path: "/browse-tasks",
-        element: <BrowseTasks/>
+        element: <BrowseTasks />,
       },
       {
         path: "/my-tasks",
-        element: <MyTask/>
+        element: (
+          <PrivetRoute>
+            <MyTask />
+          </PrivetRoute>
+        ),
       },
       {
         path: "/login",

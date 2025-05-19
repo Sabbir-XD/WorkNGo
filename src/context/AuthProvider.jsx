@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase.init";
 import toast from "react-hot-toast";
@@ -48,6 +49,12 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  //update profile
+  const handleUpdateProfile = (profileData) =>{
+    setLoading(true);
+    return updateProfile(auth.currentUser,profileData);
+  }
+
 
 
   useEffect(() => {
@@ -66,7 +73,10 @@ const AuthProvider = ({ children }) => {
     handleGoogleLogin,
     user,
     setUser,
-    handleSignOut
+    handleSignOut,
+    loading,
+    setLoading,
+    handleUpdateProfile
   };
   return <AuthContext value={userInfo}>{children}</AuthContext>;
 };
