@@ -1,30 +1,37 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import logo from "../assets/logo.jpg";
 import { FaHome, FaPlusCircle, FaSearch, FaTasks, FaUser, FaUserPlus } from "react-icons/fa";
 
 const Navbar = () => {
+  const navLinkStyle = ({ isActive }) => 
+    `flex items-center gap-2 px-4 py-2 rounded-full transition ${
+      isActive 
+        ? "bg-green-100 text-green-700 font-medium" 
+        : "text-gray-600 hover:bg-green-50 hover:text-green-600"
+    }`;
+
   const links = (
     <>
       <li>
-        <Link to="/Home" className="hover:bg-green-50 hover:text-green-600">
-          <FaHome className="text-lg" /> Home
-        </Link>
+        <NavLink to="/" className={navLinkStyle}>
+          <FaHome /> Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/add-task" className="hover:bg-green-50 hover:text-green-600">
-          <FaPlusCircle className="text-lg" /> Add Task
-        </Link>
+        <NavLink to="/add-task" className={navLinkStyle}>
+          <FaPlusCircle /> Add Task
+        </NavLink>
       </li>
       <li>
-        <Link to="/browse-tasks" className="hover:bg-green-50 hover:text-green-600">
-          <FaSearch className="text-lg" /> Browse Tasks
-        </Link>
+        <NavLink to="/browse-tasks" className={navLinkStyle}>
+          <FaSearch /> Browse Tasks
+        </NavLink>
       </li>
       <li>
-        <Link to="/my-tasks" className="hover:bg-green-50 hover:text-green-600">
-          <FaTasks className="text-lg" /> My Posted Tasks
-        </Link>
+        <NavLink to="/my-tasks" className={navLinkStyle}>
+          <FaTasks /> My Posted Tasks
+        </NavLink>
       </li>
     </>
   );
