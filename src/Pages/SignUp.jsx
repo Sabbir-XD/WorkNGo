@@ -12,11 +12,12 @@ import {
 import { MdEmail } from "react-icons/md";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Signup = () => {
-  const { handleCreateUser } = useContext(AuthContext);
+  const { handleCreateUser, handleGoogleLogin } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,14 +40,14 @@ const Signup = () => {
         Swal.fire({
           title: "Account Created Successfully!",
           icon: "success",
-          draggable: true
+          draggable: true,
         });
-        Navigate("/");
+        navigate("/");
         form.reset();
       })
       .catch((error) => {
         console.error(error.message);
-        Swal.fire("Error", error.message, "error");
+        toast.error(error.message);
       });
   };
 
@@ -59,6 +60,19 @@ const Signup = () => {
     if (!/[a-z]/.test(password))
       return "❌ Password must have at least one lowercase letter.";
     return null;
+  };
+  //Google login
+  const handleGoogle = () => {
+    handleGoogleLogin()
+      .then((result) => {
+        console.log(result);
+        toast.success("✅ Logged in with Google!");
+        navigate(location?.state || "/");
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error("❌ Google login failed.");
+      });
   };
 
   return (
@@ -150,7 +164,8 @@ const Signup = () => {
                 </button>
               </div>
               <p className="mt-1 text-xs text-gray-500">
-                Use 8 or more characters with a mix of letters, numbers & symbols
+                Use 8 or more characters with a mix of letters, numbers &
+                symbols
               </p>
             </div>
 
@@ -179,6 +194,7 @@ const Signup = () => {
             <div className="mt-6 grid grid-cols-2 gap-3">
               <button
                 type="button"
+                onClick={handleGoogle}
                 className="w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
               >
                 <FaGoogle className="text-red-500 mr-2" />

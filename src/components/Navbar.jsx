@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/logo.jpg";
-import { FaHome, FaPlusCircle, FaSearch, FaTasks, FaUser, FaUserPlus } from "react-icons/fa";
+import {
+  FaHome,
+  FaPlusCircle,
+  FaSearch,
+  FaTasks,
+  FaUser,
+  FaUserPlus,
+} from "react-icons/fa";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
-  const navLinkStyle = ({ isActive }) => 
+  const { user, handleSignOut } = useContext(AuthContext);
+  console.log(user);
+  const navLinkStyle = ({ isActive }) =>
     `flex items-center gap-2 px-4 py-2 rounded-full transition ${
-      isActive 
-        ? "bg-green-100 text-green-700 font-medium" 
+      isActive
+        ? "bg-green-100 text-green-700 font-medium"
         : "text-gray-600 hover:bg-green-50 hover:text-green-600"
     }`;
 
@@ -35,7 +45,7 @@ const Navbar = () => {
       </li>
     </>
   );
-  
+
   return (
     <div className="navbar bg-white border-b border-green-100 shadow-sm">
       <div className="navbar-start">
@@ -63,8 +73,15 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to="/" className="flex items-center text-xl sm:text-2xl md:text-3xl font-bold">
-          <img src={logo} className="w-8 md:w-12 -mr-1 md:-mr-2 rounded-full" alt="Logo" />
+        <Link
+          to="/"
+          className="flex items-center text-xl sm:text-2xl md:text-3xl font-bold"
+        >
+          <img
+            src={logo}
+            className="w-8 md:w-12 -mr-1 md:-mr-2 rounded-full"
+            alt="Logo"
+          />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-700">
             orkNGo
           </span>
@@ -74,12 +91,30 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 gap-1">{links}</ul>
       </div>
       <div className="navbar-end gap-2">
-        <Link to="/login" className="btn btn-outline btn-sm md:btn-md border-green-500 text-green-600 hover:bg-green-500 hover:text-white hover:border-green-500">
-          <FaUser className="mr-1" /> Sign In
-        </Link>
-        <Link to="/register" className="btn btn-sm md:btn-md bg-gradient-to-r from-green-500 to-green-600 text-white border-none hover:from-green-600 hover:to-green-700">
-          <FaUserPlus className="mr-1" /> Sign Up
-        </Link>
+        {user ? (
+          <button
+            to="/login"
+            onClick={handleSignOut}
+            className="btn btn-sm md:btn-md bg-gradient-to-r from-green-500 to-green-600 text-white border-none hover:from-green-600 hover:to-green-700"
+          >
+            <FaUser className="mr-1" /> Sign out
+          </button>
+        ) : (
+          <>
+            <Link
+              to="/login"
+              className="btn btn-outline btn-sm md:btn-md border-green-500 text-green-600 hover:bg-green-500 hover:text-white hover:border-green-500"
+            >
+              <FaUser className="mr-1" /> Sign In
+            </Link>
+            <Link
+              to="/register"
+              className="btn btn-sm md:btn-md bg-gradient-to-r from-green-500 to-green-600 text-white border-none hover:from-green-600 hover:to-green-700"
+            >
+              <FaUserPlus className="mr-1" /> Sign Up
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

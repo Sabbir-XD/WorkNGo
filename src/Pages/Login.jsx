@@ -1,41 +1,80 @@
-import React, { useState } from "react";
-import { Link } from "react-router";
-import { FaUserShield, FaLock, FaEye, FaEyeSlash, FaGoogle, FaGithub } from "react-icons/fa";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router";
+import {
+  FaUserShield,
+  FaLock,
+  FaEye,
+  FaEyeSlash,
+  FaGoogle,
+  FaGithub,
+} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { AuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const { handleLoginUser, handleGoogleLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const { email, password } = Object.fromEntries(formData.entries());
+    console.log(email, password);
     // Handle login logic here
-    console.log("Login submitted:", formData);
+    handleLoginUser(email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        Swal.fire({
+          title: "Login Successfully!",
+          icon: "success",
+          draggable: true,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error.message);
+        toast.error(error.message);
+      });
+  };
+  //Google login
+  const handleGoogle = () => {
+    handleGoogleLogin()
+      .then((result) => {
+        console.log(result);
+        toast.success("✅ Logged in with Google!");
+        navigate(location?.state || "/");
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error("❌ Google login failed.");
+      });
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-white flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-green-700 mb-2">Welcome Back!</h1>
-          <p className="text-gray-600">Sign in to access your workNGo account</p>
+          <h1 className="text-3xl font-bold text-green-700 mb-2">
+            Welcome Back!
+          </h1>
+          <p className="text-gray-600">
+            Sign in to access your workNGo account
+          </p>
         </div>
 
         <div className="bg-white rounded-xl shadow-lg p-8 border border-green-100">
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Email Address
               </label>
               <div className="relative">
@@ -46,8 +85,6 @@ const Login = () => {
                   type="email"
                   id="email"
                   name="email"
-                  value={formData.email}
-                  onChange={handleChange}
                   className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                   placeholder="your@email.com"
                   required
@@ -56,7 +93,10 @@ const Login = () => {
             </div>
 
             <div className="mb-6">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Password
               </label>
               <div className="relative">
@@ -67,8 +107,6 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   id="password"
                   name="password"
-                  value={formData.password}
-                  onChange={handleChange}
                   className="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                   placeholder="••••••••"
                   required
@@ -86,7 +124,10 @@ const Login = () => {
                 </button>
               </div>
               <div className="mt-2 flex justify-end">
-                <Link to="/forgot-password" className="text-sm text-green-600 hover:text-green-800">
+                <Link
+                  to="/forgot-password"
+                  className="text-sm text-green-600 hover:text-green-800"
+                >
                   Forgot password?
                 </Link>
               </div>
@@ -107,13 +148,16 @@ const Login = () => {
                 <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                <span className="px-2 bg-white text-gray-500">
+                  Or continue with
+                </span>
               </div>
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-3">
               <button
                 type="button"
+                onClick={handleGoogle}
                 className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500"
               >
                 <FaGoogle className="h-5 w-5 text-red-500" />
@@ -133,7 +177,10 @@ const Login = () => {
         <div className="mt-6 text-center">
           <p className="text-gray-600">
             Don't have an account?{" "}
-            <Link to="/register" className="font-medium text-green-600 hover:text-green-800">
+            <Link
+              to="/register"
+              className="font-medium text-green-600 hover:text-green-800"
+            >
               Sign up
             </Link>
           </p>
