@@ -15,7 +15,7 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 const Signup = () => {
-  const { handleCreateUser, handleGoogleLogin, handleUpdateProfile, setUser } =
+  const { handleCreateUser, handleGoogleLogin, handleUpdateProfile, setUser, setLoading } =
     useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -50,6 +50,7 @@ const Signup = () => {
           draggable: true,
         });
         navigate(location?.state || "/");
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error.message);

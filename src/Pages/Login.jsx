@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import {
   FaUserShield,
   FaLock,
@@ -17,6 +17,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { handleLoginUser, handleGoogleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();

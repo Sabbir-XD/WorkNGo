@@ -91,7 +91,7 @@ const BannerSlider = () => {
   };
 
   return (
-    <div className="px-2 py-4 ">
+    <div className="px-2 py-4">
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={index} className="">

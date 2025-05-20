@@ -25,7 +25,7 @@ const PopularServices = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center text-green-800 mb-4">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-700">Popular</span> Services
         </h2>
-          <p className="ext-center text-green-600 max-w-2xl mx-auto mb-12">
+          <p className="text-center text-green-600 max-w-2xl mx-auto mb-12">
             Browse the most requested freelance skills
           </p>
 

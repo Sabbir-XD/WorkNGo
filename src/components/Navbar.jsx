@@ -89,9 +89,11 @@ const Navbar = () => {
           </span>
         </Link>
       </div>
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-1">{links}</ul>
       </div>
+
       <div className="navbar-end gap-2">
         {user ? (
           <div className="flex items-center gap-4">
@@ -99,14 +101,13 @@ const Navbar = () => {
               <div
                 className="avatar my-anchor-element"
                 data-tooltip-id="user-tooltip"
-                data-tooltip-content={user.displayName || user.email}
-                data-tooltip-place="top"
+                place="top"
               >
-                <div className="w-10 rounded-full">
+                <div className="w-10 rounded-full ring ring-green-300 ring-offset-base-100 ring-offset-2 cursor-pointer z-10">
                   <img
                     src={
                       user.photoURL ||
-                      "https://i.ibb.co/4j3qYyX/default-user.png"
+                      "https://img.daisyui.com/images/profile/demo/yellingcat@192.webp"
                     }
                     alt="User Profile"
                     referrerPolicy="no-referrer"
@@ -114,14 +115,26 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <Tooltip id="user-tooltip" />
+              <Tooltip
+                id="user-tooltip"
+                clickable
+                place="top"
+                className="z-50" // high z-index
+                render={() => (
+                  <div className="flex flex-col items-start p-2 text-sm">
+                    <p className="font-medium mb-1">
+                      {user.displayName || user.email}
+                    </p>
+                    <button
+                      onClick={handleSignOut}
+                      className="btn btn-xs bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 border-none mt-1"
+                    >
+                      <FaSignOutAlt className="mr-1" /> Log out
+                    </button>
+                  </div>
+                )}
+              />
             </div>
-            <button
-              onClick={handleSignOut}
-              className="btn btn-sm md:btn-md bg-gradient-to-r from-green-500 to-green-600 text-white border-none hover:from-green-600 hover:to-green-700 flex items-center gap-1"
-            >
-              <FaSignOutAlt /> Log out
-            </button>
           </div>
         ) : (
           <>
