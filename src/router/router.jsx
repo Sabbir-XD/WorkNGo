@@ -8,6 +8,7 @@ import MyTask from "../Pages/MyTask";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import PrivetRoute from "./PrivetRoute";
+import TaskDetails from "../Pages/TaskDetails";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,16 @@ export const router = createBrowserRouter([
       {
         path: "/browse-tasks",
         element: <BrowseTasks />,
+      },
+      {
+        path: "/task/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/task/${params.id}`),
+        element: (
+          <PrivetRoute>
+            <TaskDetails />
+          </PrivetRoute>
+        ),
       },
       {
         path: "/my-tasks",

@@ -11,7 +11,7 @@ const Newsletter = () => {
           <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-green-200/50 rounded-full filter blur-xl"></div>
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-emerald-300/20 rounded-full filter blur-lg"></div>
           
-          {/* Enhanced Floating plane animation */}
+          {/* Floating plane */}
           <div className="absolute -top-6 right-10 z-20">
             <FaPaperPlane className="text-4xl text-emerald-400 animate-fly" />
           </div>
@@ -51,29 +51,21 @@ const Newsletter = () => {
         </div>
       </div>
 
-      <style jsx global>{`
+      {/* Animation CSS without JSX attributes */}
+      <style>{`
         @keyframes fly {
           0% {
-            transform: 
-              translate(20px, -20px) 
-              rotate(-10deg)
-              scale(0.8);
+            transform: translate(20px, -20px) rotate(-10deg) scale(0.8);
             opacity: 0;
           }
           10% {
             opacity: 1;
           }
           50% {
-            transform: 
-              translate(-30px, -40px) 
-              rotate(-5deg)
-              scale(1);
+            transform: translate(-30px, -40px) rotate(-5deg) scale(1);
           }
           100% {
-            transform: 
-              translate(-80px, -100px) 
-              rotate(0deg)
-              scale(1.2);
+            transform: translate(-80px, -100px) rotate(0deg) scale(1.2);
             opacity: 0;
           }
         }

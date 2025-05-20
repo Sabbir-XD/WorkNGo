@@ -3,7 +3,7 @@ import logo from "../assets/logo.jpg";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-green-50 to-green-100 py-12 mt-16 border-t border-green-200">
+    <footer className="bg-gradient-to-r from-green-50 to-green-100 py-12 md:py-16 border-t border-green-200">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Column */}
