@@ -28,8 +28,8 @@ const Home = () => {
           </p>
         </div>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {data.map((task) => (
-            <FeaturedTaskCard task={task} />
+          {data.map((task, index) => (
+            <FeaturedTaskCard key={index} task={task} />
           ))}
         </div>
       </div>

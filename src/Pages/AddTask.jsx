@@ -23,6 +23,9 @@ const AddTask = () => {
     "Translation",
     "Data Entry",
     "Video Editing",
+    "Graphic Design",
+    "Social Media",
+    "Photo Editing",
   ];
 
   //add post

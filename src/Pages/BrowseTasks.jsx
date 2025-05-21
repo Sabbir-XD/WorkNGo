@@ -290,7 +290,7 @@ const BrowseTasks = () => {
               </div>
             </div>
             <Link
-              to={`/task/${task._id}`}
+              to={`/tasks/${task._id}`}
               className="flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg text-sm font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow hover:shadow-md group-hover:scale-105 transform"
             >
               View Details <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />

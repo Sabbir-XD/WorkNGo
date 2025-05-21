@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
       {
         path: "/task/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/task/${params.id}`),
+          fetch(`http://localhost:5000/tasks/${params.id}`),
         element: (
           <PrivetRoute>
             <TaskDetails />
@@ -45,6 +45,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/my-tasks",
+        loader: () => fetch("http://localhost:5000/tasks"),
         element: (
           <PrivetRoute>
             <MyTask />
