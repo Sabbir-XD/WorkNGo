@@ -201,106 +201,108 @@ const BrowseTasks = () => {
       </div>
 
       {/* Tasks Grid - Card Design */}
-    {/* Tasks Grid - Card Design */}
-{loading ? (
-  <div className="flex justify-center items-center h-64">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
-  </div>
-) : filteredTasks.length === 0 ? (
-  <div className="text-center py-16">
-    <div className="mx-auto w-48 h-48 bg-gradient-to-br from-green-50 to-green-100 rounded-full flex items-center justify-center mb-6 shadow-inner">
-      <FaSearch className="text-6xl text-green-400 opacity-80" />
-    </div>
-    <h3 className="text-2xl font-medium text-gray-800 mb-2">
-      No tasks found
-    </h3>
-    <p className="text-gray-500 max-w-md mx-auto">
-      Try adjusting your search criteria or check back later for new tasks
-    </p>
-    <button
-      className="mt-6 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow-md hover:shadow-lg"
-      onClick={() => {
-        setSearchTerm("");
-        setFilters({
-          category: "",
-          minBudget: "",
-          maxBudget: "",
-        });
-      }}
-    >
-      Reset Filters
-    </button>
-  </div>
-) : (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {filteredTasks.map((task) => (
-      <div
-        key={task._id}
-        className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-0 group relative"
-      >
-        {/* Gradient accent bar */}
-        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-emerald-500"></div>
-        
-        <div className="p-6">
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center">
-              <div className="mr-3 p-2 bg-green-50 rounded-lg text-green-600">
-                {getCategoryIcon(task.category)}
-              </div>
-              <div>
-                <span className="inline-block px-3 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full">
-                  {task.category}
-                </span>
-              </div>
-            </div>
-            <div className="text-right">
-              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-700">
-                ${task.budget}
-              </span>
-              <span className="block text-xs text-gray-500 mt-1">Budget</span>
-            </div>
-          </div>
-
-          <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-700 transition-colors">
-            {task.title}
-          </h3>
-
-          <div className="flex items-center text-sm text-gray-500 mb-5">
-            <div className="flex items-center mr-4">
-              <FaCalendarAlt className="mr-2 text-green-500" />
-              <span>
-                  deadline: {new Date(task.deadline).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                })}
-              </span>
-            </div>
-          </div>
-
-          <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-            <div className="flex items-center">
-              <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-2">
-                <span className="text-xs font-medium text-green-700">
-                  {task.userName.charAt(0).toUpperCase()}
-                </span>
-              </div>
-              <div className="text-sm text-gray-600">
-                {task.userName}
-              </div>
-            </div>
-            <Link
-              to={`/tasks/${task._id}`}
-              className="flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg text-sm font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow hover:shadow-md group-hover:scale-105 transform"
-            >
-              View Details <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
+      {/* Tasks Grid - Card Design */}
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
         </div>
-      </div>
-    ))}
-  </div>
-)}
+      ) : filteredTasks.length === 0 ? (
+        <div className="text-center py-16">
+          <div className="mx-auto w-48 h-48 bg-gradient-to-br from-green-50 to-green-100 rounded-full flex items-center justify-center mb-6 shadow-inner">
+            <FaSearch className="text-6xl text-green-400 opacity-80" />
+          </div>
+          <h3 className="text-2xl font-medium text-gray-800 mb-2">
+            No tasks found
+          </h3>
+          <p className="text-gray-500 max-w-md mx-auto">
+            Try adjusting your search criteria or check back later for new tasks
+          </p>
+          <button
+            className="mt-6 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow-md hover:shadow-lg"
+            onClick={() => {
+              setSearchTerm("");
+              setFilters({
+                category: "",
+                minBudget: "",
+                maxBudget: "",
+              });
+            }}
+          >
+            Reset Filters
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredTasks.map((task) => (
+            <div
+              key={task._id}
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-0 group relative"
+            >
+              {/* Gradient accent bar */}
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-emerald-500"></div>
+
+              <div className="p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center">
+                    <div className="mr-3 p-2 bg-green-50 rounded-lg text-green-600">
+                      {getCategoryIcon(task.category)}
+                    </div>
+                    <div>
+                      <span className="inline-block px-3 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full">
+                        {task.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-700">
+                      ${task.budget}
+                    </span>
+                    <span className="block text-xs text-gray-500 mt-1">
+                      Budget
+                    </span>
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-700 transition-colors">
+                  {task.title}
+                </h3>
+
+                <div className="flex items-center text-sm text-gray-500 mb-5">
+                  <div className="flex items-center mr-4">
+                    <FaCalendarAlt className="mr-2 text-green-500" />
+                    <span>
+                      deadline:{" "}
+                      {new Date(task.deadline).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                      <span className="text-xs font-medium text-green-700">
+                        {task.userName.charAt(0).toUpperCase()}
+                      </span>
+                    </div>
+                    <div className="text-sm text-gray-600">{task.userName}</div>
+                  </div>
+                  <Link
+                    to={`/task/${task._id}`}
+                    className="flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg text-sm font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow hover:shadow-md group-hover:scale-105 transform"
+                  >
+                    View Details{" "}
+                    <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Floating Action Button */}
       <div className="fixed bottom-8 right-8">

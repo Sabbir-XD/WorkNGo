@@ -9,6 +9,8 @@ import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import PrivetRoute from "./PrivetRoute";
 import TaskDetails from "../Pages/TaskDetails";
+import UpdateTask from "../Pages/UpdateTask";
+import TaskBids from "../Pages/TaskBids";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +51,24 @@ export const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <MyTask />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/update-task/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/tasks/${params.id}`),
+        element: (
+          <PrivetRoute>
+            <UpdateTask />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/bids/:id",
+        element: (
+          <PrivetRoute>
+            <TaskBids />
           </PrivetRoute>
         ),
       },

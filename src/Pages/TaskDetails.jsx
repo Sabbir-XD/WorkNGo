@@ -1,24 +1,80 @@
-import React from 'react';
-import { FaCode, FaCalendarAlt, FaUser, FaEnvelope, FaMoneyBillWave, FaArrowLeft } from 'react-icons/fa';
-import { useLoaderData } from 'react-router';
+import React, { useContext, useEffect, useState } from "react";
+import {
+  FaCode,
+  FaCalendarAlt,
+  FaUser,
+  FaEnvelope,
+  FaMoneyBillWave,
+  FaArrowLeft,
+} from "react-icons/fa";
+import { useLoaderData } from "react-router";
+import { AuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 const TaskDetails = () => {
   const task = useLoaderData();
+  const { user } = useContext(AuthContext);
+  const [bidCount, setBidCount] = useState(0);
+
+  // Fetch user's bid count
+  useEffect(() => {
+    if (user?.email) {
+      fetch(`http://localhost:5000/bids-count?email=${user.email}`)
+        .then((res) => res.json())
+        .then((data) => setBidCount(data.count || 0));
+    }
+  }, [user?.email]);
+
+  // Handle bidding
+  const handleBid = async () => {
+    const response = await fetch("http://localhost:5000/bids/increment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userEmail: user.email,
+        userPhoto: user.photoURL,
+        taskId: task._id,
+        taskTitle: task.title,
+      }),
+    });
+
+    if (response.ok) {
+      const res = await fetch(
+        `http://localhost:5000/bids-count?email=${user.email}`
+      );
+      const data = await res.json();
+      setBidCount(data.count || 0);
+      toast.success("Successfully placed your bid!");
+    } else {
+      toast.error("Something went wrong!");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
+        {/* ✅ Bid count message */}
+        <div className="text-center mb-6">
+          <p className="text-green-700 text-lg font-medium">
+            You bid for <span className="font-bold">{bidCount}</span>{" "}
+            opportunities.
+          </p>
+        </div>
+
         {/* Back button */}
         <div className="mb-8">
-          <button onClick={() => window.history.back()} className="flex items-center text-green-600 hover:text-green-800 transition-colors">
+          <button
+            onClick={() => window.history.back()}
+            className="flex items-center text-green-600 hover:text-green-800 transition-colors"
+          >
             <FaArrowLeft className="mr-2" />
             Back to Tasks
           </button>
         </div>
 
-        {/* Main card */}
+        {/* Main Card */}
         <div className="bg-white rounded-2xl overflow-hidden shadow-xl">
-          {/* Header with gradient */}
+          {/* Header */}
           <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-6 text-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -26,7 +82,9 @@ const TaskDetails = () => {
                   <FaCode className="text-2xl" />
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold capitalize">{task.title}</h1>
+                  <h1 className="text-2xl font-bold capitalize">
+                    {task.title}
+                  </h1>
                   <span className="inline-block mt-2 px-3 py-1 text-xs font-semibold bg-white bg-opacity-20 rounded-full">
                     {task.category}
                   </span>
@@ -47,10 +105,12 @@ const TaskDetails = () => {
                 <span className="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
                 Project Description
               </h2>
-              <p className="text-gray-600 leading-relaxed">{task.description}</p>
+              <p className="text-gray-600 leading-relaxed">
+                {task.description}
+              </p>
             </div>
 
-            {/* Details grid */}
+            {/* Info Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
               {/* Deadline */}
               <div className="bg-green-50 rounded-xl p-5">
@@ -59,11 +119,11 @@ const TaskDetails = () => {
                   <h3 className="font-medium text-gray-800">Deadline</h3>
                 </div>
                 <p className="text-gray-700 pl-8">
-                  {new Date(task.deadline).toLocaleDateString('en-US', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
+                  {new Date(task.deadline).toLocaleDateString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
                   })}
                 </p>
               </div>
@@ -74,7 +134,9 @@ const TaskDetails = () => {
                   <FaMoneyBillWave className="text-green-500 mr-3" />
                   <h3 className="font-medium text-gray-800">Budget</h3>
                 </div>
-                <p className="text-gray-700 pl-8">${task.budget} (Fixed Price)</p>
+                <p className="text-gray-700 pl-8">
+                  ${task.budget} (Fixed Price)
+                </p>
               </div>
 
               {/* Client */}
@@ -96,11 +158,15 @@ const TaskDetails = () => {
               </div>
             </div>
 
-            {/* Action buttons */}
+            {/* ✅ Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200">
-              <button className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 px-6 rounded-lg font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow-md hover:shadow-lg flex items-center justify-center">
-                Apply for this Project
+              <button
+                onClick={handleBid}
+                className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 px-6 rounded-lg font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow-md hover:shadow-lg flex items-center justify-center"
+              >
+                Place a Bid
               </button>
+
               <button className="flex-1 bg-white border border-green-500 text-green-600 py-3 px-6 rounded-lg font-medium hover:bg-green-50 transition-colors flex items-center justify-center">
                 Save for Later
               </button>
