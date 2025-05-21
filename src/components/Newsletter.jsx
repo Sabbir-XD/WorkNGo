@@ -35,7 +35,7 @@ const Newsletter = () => {
                 placeholder="Your email address" 
                 className="flex-grow px-6 py-4 rounded-xl bg-white border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:border-transparent placeholder-gray-400 text-gray-700 shadow-sm"
               />
-              <button className="px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 transform">
+              <button className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-green-700 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 transform">
                 <FiSend className="text-lg" />
                 Subscribe
               </button>

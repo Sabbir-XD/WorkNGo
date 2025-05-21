@@ -45,7 +45,7 @@ const HowItWorks = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <button className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition shadow-md">
+          <button className="px-8 py-3 bg-gradient-to-r from-emerald-600 to-green-700 text-white rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition shadow-md">
             Get Started Now
           </button>
         </div>

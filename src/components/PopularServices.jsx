@@ -67,7 +67,7 @@ const PopularServices = () => {
         </Swiper>
 
         <div className="mt-16 text-center">
-          <button className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:from-green-600 hover:to-green-700">
+          <button className="px-8 py-3 bg-gradient-to-r from-emerald-600 to-green-700 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:from-green-600 hover:to-green-700">
             View All Categories
           </button>
         </div>

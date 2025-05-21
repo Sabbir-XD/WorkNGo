@@ -18,6 +18,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () => fetch("http://localhost:5000/featured-tasks"),
         element: <Home />,
       },
       {
