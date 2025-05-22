@@ -22,9 +22,7 @@ A dynamic freelance task marketplace platform that connects clients with freelan
 
 ## 📸 Screenshots
 
-<div align="center">
-  <img src="![alt text](image.png)" alt="Homepage" width="45%"/>
-</div>
+![alt text](image.png)
 
 
 
