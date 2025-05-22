@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/logo.jpg";
 import {
@@ -12,15 +12,17 @@ import {
 } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
 import { Tooltip } from "react-tooltip";
+import { ThemeContext } from "../Theme/ThemeContext";
 
 const Navbar = () => {
   const { user, handleSignOut } = useContext(AuthContext);
+  const { isDark, toggleTheme } = useContext(ThemeContext);
 
   const navLinkStyle = ({ isActive }) =>
     `flex items-center gap-2 px-4 py-2 rounded transition ${
       isActive
-        ? "bg-green-100 text-green-700 font-medium"
-        : "text-gray-600 hover:bg-green-50 hover:text-green-600"
+        ? "bg-green-100 text-green-700 font-medium dark:bg-green-700 dark:text-white"
+        : "text-gray-600 hover:bg-green-50 hover:text-green-600 dark:text-gray-300 dark:hover:bg-green-800 dark:hover:text-white"
     }`;
 
   const links = (
@@ -49,7 +51,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-white border-b border-green-100 shadow-sm">
+    <div className="navbar bg-white dark:bg-gray-900 border-b border-green-100 dark:border-green-800 shadow-sm transition">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -70,7 +72,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-white rounded-box z-10 mt-3 w-52 p-2 shadow-lg border border-green-100"
+            className="menu menu-sm dropdown-content bg-white dark:bg-gray-800 rounded-box z-10 mt-3 w-52 p-2 shadow-lg border border-green-100 dark:border-green-700"
           >
             {links}
           </ul>
@@ -95,6 +97,14 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end gap-2">
+        {/* Theme toggle button */}
+        <button
+          onClick={toggleTheme}
+          className="btn btn-sm md:btn-md px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 border border-gray-300 dark:border-gray-600 rounded-full transition hover:bg-gray-200 dark:hover:bg-gray-600"
+          aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        >
+          {isDark ? "☀️" : "🌙"}
+        </button>
         {user ? (
           <div className="flex items-center gap-4">
             <div>
@@ -119,7 +129,7 @@ const Navbar = () => {
                 id="user-tooltip"
                 clickable
                 place="top"
-                className="z-50" // high z-index
+                className="z-50"
                 render={() => (
                   <div className="flex flex-col items-start p-2 text-sm">
                     <p className="font-medium mb-1">

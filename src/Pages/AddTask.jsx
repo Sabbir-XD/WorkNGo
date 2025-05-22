@@ -59,7 +59,7 @@ const AddTask = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 mt-10 bg-white rounded-xl shadow-lg">
+    <div className="max-w-2xl mx-auto p-6 mt-5 mb-5 md:mb-10 md:mt-10 bg-white rounded-xl shadow-lg">
       {/* Header */}
       <div className="flex items-center mb-6">
         <HiOutlineClipboardList className="text-emerald-600 text-3xl mr-3" />
@@ -175,7 +175,7 @@ const AddTask = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full flex items-center justify-center py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg shadow-md transition duration-200"
+          className="w-full flex items-center justify-center py-3 px-4 bg-green-600 hover:bg-emerald-700 text-white font-medium rounded-lg shadow-md transition duration-200"
         >
           <FaPlus className="mr-2" />
           Post Task

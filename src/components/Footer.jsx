@@ -18,7 +18,7 @@ const Footer = () => {
                 orkNGo
               </span>
             </div>
-            <p className="text-green-700 text-sm">
+            <p className="text-gray-700 text-sm">
               Connecting skilled freelancers with clients for quick task completion.
             </p>
           </div>
@@ -27,10 +27,10 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-green-800 mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-green-600 hover:text-green-800 transition">Browse Tasks</a></li>
-              <li><a href="#" className="text-green-600 hover:text-green-800 transition">Post a Task</a></li>
-              <li><a href="#" className="text-green-600 hover:text-green-800 transition">Freelancer Dashboard</a></li>
-              <li><a href="#" className="text-green-600 hover:text-green-800 transition">How It Works</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-800 transition">Browse Tasks</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-800 transition">Post a Task</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-800 transition">Freelancer Dashboard</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-800 transition">How It Works</a></li>
             </ul>
           </div>
 
@@ -39,14 +39,14 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-green-800 mb-4">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-center">
-                <FaEnvelope className="text-green-600 mr-2" />
-                <a href="mailto:contact@orkngo.com" className="text-green-600 hover:text-green-800 transition">
+                <FaEnvelope className="text-gray-600 mr-2" />
+                <a href="mailto:contact@orkngo.com" className="text-gray-600 hover:text-green-800 transition">
                   contact@orkngo.com
                 </a>
               </li>
               <li className="flex items-center">
-                <FaHeadset className="text-green-600 mr-2" />
-                <a href="#" className="text-green-600 hover:text-green-800 transition">
+                <FaHeadset className="text-gray-600 mr-2" />
+                <a href="#" className="text-gray-600 hover:text-gray-800 transition">
                   Support Center
                 </a>
               </li>
@@ -71,8 +71,8 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold text-green-800 mb-2">Legal</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-green-600 hover:text-green-800 transition text-sm">Terms of Service</a></li>
-                <li><a href="#" className="text-green-600 hover:text-green-800 transition text-sm">Privacy Policy</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-gray-800 transition text-sm">Terms of Service</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-gray-800 transition text-sm">Privacy Policy</a></li>
               </ul>
             </div>
           </div>
