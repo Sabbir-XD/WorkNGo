@@ -1,12 +1,31 @@
-# React + Vite
+# WorkNGo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A dynamic freelance task marketplace platform that connects clients with freelancers for small-scale jobs. Whether you're looking to get a task done or searching for freelance work, **WorkNGo** provides a simple and efficient way to post, bid, and collaborate.
 
-Currently, two official plugins are available:
+🌐 **Live Site:** [https://assaignment-10-client-162f6.web.app/](https://assaignment-10-client-162f6.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔐 **Authentication System**: Secure sign-up and login with email, Google, and GitHub options using Firebase Authentication.
+- 📋 **Task Posting & Bidding**: Clients can post tasks with descriptions, budgets, and deadlines. Freelancers can place bids with ease.
+- 📄 **Individual Task Pages**: Each task includes detailed information, including bid counts, deadlines, and user interaction.
+- 🎨 **Modern UI/UX**: Built with Tailwind CSS, DaisyUI, and Framer Motion for responsive, smooth, and visually appealing design.
+- 🌙 **Dark Mode Toggle**: Seamless light/dark theme switching using `react-dark-mode-toggle`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧩 Tech Stack
+
+- **Frontend:** React, Vite, Tailwind CSS, DaisyUI
+- **Authentication & Hosting:** Firebase
+- **UI Enhancements:** Framer Motion, SweetAlert2, React Icons, Lucide React
+- **Routing:** React Router
+- **Utilities:** React Hot Toast for notifications, Swiper and React Slick for sliders/carousels
+
+## 📸 Screenshots
+
+<div align="center">
+  <img src="![alt text](image.png)" alt="Homepage" width="45%"/>
+</div>
+
+
+
+
