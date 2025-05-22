@@ -16,39 +16,43 @@ const TaskDetails = () => {
   const { user } = useContext(AuthContext);
   const [bidCount, setBidCount] = useState(0);
 
-  // Fetch user's bid count
+
   useEffect(() => {
-    if (user?.email) {
-      fetch(`http://localhost:5000/bids-count?email=${user.email}`)
-        .then((res) => res.json())
-        .then((data) => setBidCount(data.count || 0));
-    }
-  }, [user?.email]);
-
-  // Handle bidding
-  const handleBid = async () => {
-    const response = await fetch("http://localhost:5000/bids/increment", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userEmail: user.email,
-        userPhoto: user.photoURL,
-        taskId: task._id,
-        taskTitle: task.title,
-      }),
-    });
-
-    if (response.ok) {
-      const res = await fetch(
-        `http://localhost:5000/bids-count?email=${user.email}`
+    setBidCount(task?.bidsCount || 0);
+  }, [task]);
+  const handlePlaceBid = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/tasks/${task._id}/increment-bid`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId: user.uid }),
+        }
       );
-      const data = await res.json();
-      setBidCount(data.count || 0);
-      toast.success("Successfully placed your bid!");
-    } else {
-      toast.error("Something went wrong!");
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        setBidCount(bidCount + 1);
+        toast.success("✅ Your bid was placed successfully!");
+      } else {
+        // Specific error message for duplicate bid
+        if (data.message === "Already bid") {
+          toast("⚠️ You have already placed a bid with this Account.");
+        } else {
+          toast.error(data.message || " Failed to place bid.");
+        }
+      }
+    } catch (error) {
+      console.error("Error placing bid:", error);
+      toast.error(" Something went wrong. Please try again.");
     }
   };
+  
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -160,10 +164,7 @@ const TaskDetails = () => {
 
             {/* ✅ Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200">
-              <button
-                onClick={handleBid}
-                className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 px-6 rounded-lg font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow-md hover:shadow-lg flex items-center justify-center"
-              >
+              <button onClick={handlePlaceBid} className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 px-6 rounded-lg font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow-md hover:shadow-lg flex items-center justify-center">
                 Place a Bid
               </button>
 

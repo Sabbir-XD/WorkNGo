@@ -5,11 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DaisyUI plugin */
-@layer components {
-  @import "daisyui";
-}
-
 /* Global font */
 * {
   font-family: "Poppins", sans-serif;
@@ -19,3 +14,5 @@
 a.active {
   @apply border-b-2 border-b-green-500 text-green-600 font-semibold;
 }
+
+

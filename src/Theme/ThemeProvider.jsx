@@ -3,22 +3,30 @@ import React, { useEffect, useState } from "react";
 import { ThemeContext } from "./ThemeContext";
 
 const ThemeProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState(
-    () => localStorage.getItem("theme") === "dark"
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
 
   useEffect(() => {
-    const root = document.documentElement;
-    const theme = isDark ? "dark" : "light";
-    root.classList.toggle("dark", isDark);
-    root.setAttribute("data-theme", isDark ? "mydark" : "mylight");
     localStorage.setItem("theme", theme);
-  }, [isDark]);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
 
-  const toggleTheme = () => setIsDark(prev => !prev);
+  const handleToggle = (e) => {
+     if(e.target.checked){
+      setTheme("dark");
+     }else{
+      setTheme("light");
+     }
+  };
+
+  const ThemeData = {
+    handleToggle
+  }
 
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider value={ThemeData}>
       {children}
     </ThemeContext.Provider>
   );
