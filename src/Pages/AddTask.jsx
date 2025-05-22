@@ -34,10 +34,9 @@ const AddTask = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    console.log("Data:", data);
 
     // Example: Send coffeeData to your server or API
-    fetch("http://localhost:5000/tasks", {
+    fetch("https://assaignment-10-server-livid.vercel.app/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

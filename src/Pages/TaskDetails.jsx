@@ -23,7 +23,7 @@ const TaskDetails = () => {
   const handlePlaceBid = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/tasks/${task._id}/increment-bid`,
+        `https://assaignment-10-server-livid.vercel.app/tasks/${task._id}/increment-bid`,
         {
           method: "PATCH",
           headers: {

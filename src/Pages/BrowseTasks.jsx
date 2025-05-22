@@ -29,7 +29,7 @@ const BrowseTasks = () => {
     const fetchTasks = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/tasks");
+        const response = await fetch("https://assaignment-10-server-livid.vercel.app/tasks");
         const data = await response.json();
         setTasks(data);
         setLoading(false);

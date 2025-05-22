@@ -24,13 +24,12 @@ const Login = () => {
     const form = e.target;
     const formData = new FormData(form);
     const { email, password } = Object.fromEntries(formData.entries());
-    console.log(email, password);
+
     // Handle login logic here
     handleLoginUser(email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
         Swal.fire({
           title: "Login Successfully!",
           icon: "success",
@@ -47,7 +46,6 @@ const Login = () => {
   const handleGoogle = () => {
     handleGoogleLogin()
       .then((result) => {
-        console.log(result);
         toast.success("✅ Logged in with Google!");
         navigate(location?.state || "/");
       })

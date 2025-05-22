@@ -17,7 +17,6 @@ import { ThemeContext } from "../Theme/ThemeContext";
 const Navbar = () => {
   const { user, handleSignOut } = useContext(AuthContext);
   const { handleToggle } = useContext(ThemeContext);
-  console.log(handleToggle);
 
   const navLinkStyle = ({ isActive }) =>
     `flex items-center gap-2 px-4 py-2 rounded transition ${

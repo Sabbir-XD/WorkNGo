@@ -39,7 +39,6 @@ const Signup = () => {
     handleCreateUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
 
         handleUpdateProfile({ displayName: name, photoURL: photo });
         setUser({ ...user, displayName: name, photoURL: photo });
@@ -72,7 +71,6 @@ const Signup = () => {
   const handleGoogle = () => {
     handleGoogleLogin()
       .then((result) => {
-        console.log(result);
         toast.success("✅ Logged in with Google!");
         navigate(location?.state || "/");
       })

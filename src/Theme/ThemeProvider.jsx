@@ -11,6 +11,10 @@ const ThemeProvider = ({ children }) => {
     localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme");
     document.querySelector("html").setAttribute("data-theme", localTheme);
+    document.querySelector("html").classList.remove("light");
+    document.querySelector("html").classList.remove("dark");
+    document.querySelector("html").classList.add(theme);
+
   }, [theme]);
 
   const handleToggle = (e) => {

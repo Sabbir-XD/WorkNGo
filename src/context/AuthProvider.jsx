@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 const AuthProvider = ({ children }) => {
   const provider = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
-  const [loading, setLoading ] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   // create a USER
   const handleCreateUser = (email, password) => {
@@ -49,18 +49,15 @@ const AuthProvider = ({ children }) => {
   };
 
   //update profile
-  const handleUpdateProfile = (profileData) =>{
+  const handleUpdateProfile = (profileData) => {
     setLoading(true);
-    return updateProfile(auth.currentUser,profileData);
-  }
-
-
+    return updateProfile(auth.currentUser, profileData);
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
       setUser(currentUser);
-      setLoading(false)
+      setLoading(false);
     });
     return () => {
       unsubscribe();
@@ -76,7 +73,7 @@ const AuthProvider = ({ children }) => {
     handleSignOut,
     loading,
     setLoading,
-    handleUpdateProfile
+    handleUpdateProfile,
   };
   return <AuthContext value={userInfo}>{children}</AuthContext>;
 };

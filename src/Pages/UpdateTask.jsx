@@ -37,7 +37,7 @@ const UpdateTask = () => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    fetch(`http://localhost:5000/tasks/${_id}`, {
+    fetch(`https://assaignment-10-server-livid.vercel.app/tasks/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,6 @@ const UpdateTask = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount) {
           Swal.fire({
             title: "Task Updated Successfully!",

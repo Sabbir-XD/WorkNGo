@@ -25,7 +25,7 @@ const MyTasks = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/tasks/email/${user.email}`)
+      fetch(`https://assaignment-10-server-livid.vercel.app/tasks/email/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setTasks(data);
@@ -49,7 +49,7 @@ const MyTasks = () => {
       `,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/tasks/${id}`, {
+        fetch(`https://assaignment-10-server-livid.vercel.app/tasks/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -249,13 +249,13 @@ const MyTasks = () => {
                           >
                             <FaTrash className="text-sm" />
                           </button>
-                          <Link
-                            to={`/bids/${task._id}`}
+                          <button
+                            
                             className="inline-flex items-center justify-center bg-blue-100 hover:bg-blue-200 text-blue-600 w-9 h-9 rounded-lg transition-colors"
                             title="View Bids"
                           >
                             <FaHandshake className="text-sm" />
-                          </Link>
+                          </button>
                         </td>
                       </tr>
                     );
@@ -330,13 +330,13 @@ const MyTasks = () => {
                       >
                         <FaTrash />
                       </button>
-                      <Link
-                        to={`/bids/${task._id}`}
+                      <button
+                        
                         className="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-100 rounded-lg transition-colors"
                         title="Bids"
                       >
                         <FaHandshake />
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 );

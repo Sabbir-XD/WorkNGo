@@ -10,7 +10,7 @@ import SignUp from "../Pages/SignUp";
 import PrivetRoute from "./PrivetRoute";
 import TaskDetails from "../Pages/TaskDetails";
 import UpdateTask from "../Pages/UpdateTask";
-import TaskBids from "../Pages/TaskBids";
+import Loading from "../components/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +20,11 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("http://localhost:5000/featured-tasks"),
+        hydrateFallbackElement: <Loading />,
+        loader: () =>
+          fetch(
+            "https://assaignment-10-server-livid.vercel.app/featured-tasks"
+          ),
         element: <Home />,
       },
       {
@@ -37,8 +41,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/task/:id",
+        hydrateFallbackElement: <Loading />,
+
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tasks/${params.id}`),
+          fetch(
+            `https://assaignment-10-server-livid.vercel.app/tasks/${params.id}`
+          ),
         element: (
           <PrivetRoute>
             <TaskDetails />
@@ -47,7 +55,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "/my-tasks",
-        loader: () => fetch("http://localhost:5000/tasks"),
+        hydrateFallbackElement: <Loading />,
+        loader: () =>
+          fetch("https://assaignment-10-server-livid.vercel.app/tasks"),
         element: (
           <PrivetRoute>
             <MyTask />
@@ -56,19 +66,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/update-task/:id",
+        hydrateFallbackElement: <Loading />,
+
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tasks/${params.id}`),
+          fetch(
+            `https://assaignment-10-server-livid.vercel.app/tasks/${params.id}`
+          ),
         element: (
           <PrivetRoute>
             <UpdateTask />
-          </PrivetRoute>
-        ),
-      },
-      {
-        path: "/bids/:id",
-        element: (
-          <PrivetRoute>
-            <TaskBids />
           </PrivetRoute>
         ),
       },

@@ -17,7 +17,7 @@ const Home = () => {
       </div>
       <div className="w-11/12 mx-auto">
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-green-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-green-800 mt-5 mb-4">
             Featured{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-700">
               Tasks
