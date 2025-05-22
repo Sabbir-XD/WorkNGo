@@ -169,11 +169,10 @@ const Navbar = () => {
             >
               <FaUser className="mr-1" /> Sign In
             </Link>
-            <Link
-              to="/register"
-              className="btn btn-sm md:btn-md bg-gradient-to-r from-green-500 to-green-600 text-white border-none hover:from-green-600 hover:to-green-700"
-            >
-              <FaUserPlus className="mr-1" /> Sign Up
+            <Link to="/register" className=" hidden md:block">
+              <span className="btn btn-sm md:btn-md bg-gradient-to-r from-green-500 to-green-600 text-white border-none  hover:from-green-600 hover:to-green-700">
+                <FaUserPlus className="mr-1" /> Sign Up
+              </span>
             </Link>
           </>
         )}

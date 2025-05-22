@@ -5,6 +5,7 @@ import PopularServices from "../components/PopularServices";
 import Newsletter from "../components/Newsletter";
 import FeaturedTaskCard from "../components/FeaturedTaskCard";
 import { useLoaderData } from "react-router";
+import SignUpOptions from "../components/SignUpOptions";
 
 const Home = () => {
   const data = useLoaderData();
@@ -34,6 +35,7 @@ const Home = () => {
         </div>
       </div>
       <PopularServices />
+      <SignUpOptions/>
       <Newsletter />
     </div>
   );

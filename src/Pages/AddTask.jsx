@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-
 import {
   FaTasks,
   FaCalendarAlt,
@@ -28,14 +27,12 @@ const AddTask = () => {
     "Photo Editing",
   ];
 
-  //add post
   const handleAddTasks = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    // Example: Send coffeeData to your server or API
     fetch("https://assaignment-10-server-livid.vercel.app/tasks", {
       method: "POST",
       headers: {
@@ -51,24 +48,26 @@ const AddTask = () => {
               icon: "success",
               draggable: true,
               timer: 2000,
+              background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#fff',
+              color: document.documentElement.classList.contains('dark') ? '#fff' : '#000',
             });
           form.reset();
-      }
+        }
       });
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 mt-5 mb-5 md:mb-10 md:mt-10 bg-white rounded-xl shadow-lg">
+    <div className="max-w-2xl mx-auto p-4 sm:p-6 mt-5 mb-5 md:mb-10 md:mt-10 bg-green-100 dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-700/50">
       {/* Header */}
       <div className="flex items-center mb-6">
-        <HiOutlineClipboardList className="text-emerald-600 text-3xl mr-3" />
-        <h2 className="text-2xl font-bold text-gray-800">Post a New Task</h2>
+        <HiOutlineClipboardList className="text-emerald-600 dark:text-emerald-400 text-3xl mr-3" />
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Post a New Task</h2>
       </div>
 
       <form onSubmit={handleAddTasks} className="space-y-5">
         {/* Task Title */}
         <div className="space-y-1">
-          <label className="flex items-center text-sm font-medium text-gray-700">
+          <label className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300">
             <FaTasks className="mr-2 text-emerald-500" />
             Task Title
           </label>
@@ -76,20 +75,22 @@ const AddTask = () => {
             type="text"
             name="title"
             placeholder="e.g. Need a logo designer"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition bg-white dark:bg-gray-700 dark:text-white"
+            required
           />
         </div>
 
         {/* Category Dropdown */}
         <div className="space-y-1">
-          <label className="flex items-center text-sm font-medium text-gray-700">
+          <label className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300">
             <FaPenAlt className="mr-2 text-emerald-500" />
             Category
           </label>
           <div className="relative">
             <select
               name="category"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg appearance-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition pr-8"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg appearance-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition pr-8 bg-white dark:bg-gray-700 dark:text-white"
+              required
             >
               <option value="">Select a category</option>
               {categories.map((cat) => (
@@ -98,13 +99,13 @@ const AddTask = () => {
                 </option>
               ))}
             </select>
-            <RiArrowDownSLine className="absolute right-3 top-3 text-gray-500 text-xl pointer-events-none" />
+            <RiArrowDownSLine className="absolute right-3 top-3 text-gray-500 dark:text-gray-400 text-xl pointer-events-none" />
           </div>
         </div>
 
         {/* Description */}
         <div className="space-y-1">
-          <label className="flex items-center text-sm font-medium text-gray-700">
+          <label className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300">
             <FaPenAlt className="mr-2 text-emerald-500" />
             Description
           </label>
@@ -112,25 +113,27 @@ const AddTask = () => {
             name="description"
             placeholder="Describe what needs to be done in detail..."
             rows={4}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition bg-white dark:bg-gray-700 dark:text-white"
+            required
           />
         </div>
 
         {/* Deadline & Budget */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-1">
-            <label className="flex items-center text-sm font-medium text-gray-700">
+            <label className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300">
               <FaCalendarAlt className="mr-2 text-emerald-500" />
               Deadline
             </label>
             <input
               type="date"
               name="deadline"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition bg-white dark:bg-gray-700 dark:text-white"
+              required
             />
           </div>
           <div className="space-y-1">
-            <label className="flex items-center text-sm font-medium text-gray-700">
+            <label className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300">
               <FaWallet className="mr-2 text-emerald-500" />
               Budget ($)
             </label>
@@ -138,7 +141,9 @@ const AddTask = () => {
               type="number"
               name="budget"
               placeholder="e.g. 50"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+              min="1"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition bg-white dark:bg-gray-700 dark:text-white"
+              required
             />
           </div>
         </div>
@@ -146,27 +151,27 @@ const AddTask = () => {
         {/* User Info (Read Only) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               User Name
             </label>
             <input
               type="text"
               name="userName"
-              value={user.displayName}
+              value={user?.displayName || ''}
               readOnly
-              className="w-full px-4 py-2 bg-gray-100 rounded-lg text-gray-700"
+              className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-600 rounded-lg text-gray-700 dark:text-gray-300"
             />
           </div>
           <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               User Email
             </label>
             <input
               type="email"
               name="userEmail"
-              value={user.email}
+              value={user?.email || ''}
               readOnly
-              className="w-full px-4 py-2 bg-gray-100 rounded-lg text-gray-700"
+              className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-600 rounded-lg text-gray-700 dark:text-gray-300"
             />
           </div>
         </div>
@@ -174,7 +179,7 @@ const AddTask = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full flex items-center justify-center py-3 px-4 bg-green-600 hover:bg-emerald-700 text-white font-medium rounded-lg shadow-md transition duration-200"
+          className="w-full flex items-center justify-center py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg shadow-md transition duration-200 transform hover:scale-[1.02]"
         >
           <FaPlus className="mr-2" />
           Post Task
