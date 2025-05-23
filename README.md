@@ -2,7 +2,7 @@
 
 A dynamic freelance task marketplace platform that connects clients with freelancers for small-scale jobs. Whether you're looking to get a task done or searching for freelance work, **WorkNGo** provides a simple and efficient way to post, bid, and collaborate.
 
-🌐 **Live Site:** [https://assaignment-10-client-162f6.web.app/](https://assaignment-10-client-162f6.web.app/)
+[🌐 **Live Site:**](https://assaignment-10-client-162f6.web.app/)
 
 ## 🚀 Features
 
@@ -22,7 +22,11 @@ A dynamic freelance task marketplace platform that connects clients with freelan
 
 ## 📸 Screenshots
 
-![alt text](image.png)
+![alt text](image.png)  
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
 
 
 

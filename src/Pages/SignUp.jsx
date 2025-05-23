@@ -13,6 +13,7 @@ import { MdEmail } from "react-icons/md";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Signup = () => {
   const { handleCreateUser, handleGoogleLogin, handleUpdateProfile, setUser, setLoading } =
@@ -82,6 +83,9 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-white dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100">
+      <Helmet>
+        <title>workNGo | Sign Up</title>
+      </Helmet>
       <div className="w-full max-w-lg mx-auto mb-5">
         <div className="text-center mb-8 pt-5">
           <h1 className="text-3xl font-bold text-green-700 dark:text-green-400 mb-2">

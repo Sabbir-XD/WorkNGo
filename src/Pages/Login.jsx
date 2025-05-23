@@ -12,6 +12,7 @@ import { MdEmail } from "react-icons/md";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -57,6 +58,9 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-900 flex items-center justify-center p-4">
+      <Helmet>
+        <title>WorkNGo | Login</title>
+      </Helmet>
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-green-700 dark:text-green-400 mb-2">

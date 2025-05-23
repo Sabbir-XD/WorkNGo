@@ -10,6 +10,7 @@ import { HiOutlineClipboardList } from "react-icons/hi";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddTask = () => {
   const { user } = useContext(AuthContext);
@@ -57,7 +58,10 @@ const AddTask = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4 sm:p-6 mt-5 mb-5 md:mb-10 md:mt-10 bg-green-100 dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-700/50">
+    <div className="max-w-2xl mx-auto p-4 sm:p-6 mt-5 mb-5 md:mb-10 md:mt-10 bg-green-50 dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-700/50">
+      <Helmet>
+        <title>WorkNGo | Add Task</title>
+      </Helmet>
       {/* Header */}
       <div className="flex items-center mb-6">
         <HiOutlineClipboardList className="text-emerald-600 dark:text-emerald-400 text-3xl mr-3" />

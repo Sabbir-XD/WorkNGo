@@ -17,6 +17,7 @@ import { GiProgression } from "react-icons/gi";
 import Swal from "sweetalert2";
 import { Link, useLoaderData } from "react-router";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const MyTasks = () => {
   const { user } = useContext(AuthContext);
@@ -118,7 +119,6 @@ const MyTasks = () => {
     // Show modal to view bids
     setShowBidsModal(true);
   };
-  /*******  64f860f2-5c7a-49e4-ad72-ef6c5afbc42b  *******/
 
   const closeModal = () => {
     setShowBidsModal(false);
@@ -127,6 +127,9 @@ const MyTasks = () => {
 
   return (
     <div className="p-4 md:p-8 bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-gray-900 min-h-screen">
+       <Helmet>
+        <title>My Posted Tasks</title>
+      </Helmet>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div className="flex items-center">

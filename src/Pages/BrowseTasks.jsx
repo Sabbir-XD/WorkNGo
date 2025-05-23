@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
 import { AuthContext } from "../context/AuthContext";
+import { Helmet } from "react-helmet";
 
 const BrowseTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -91,6 +92,9 @@ const BrowseTasks = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl dark:bg-gray-900 min-h-screen transition-colors duration-300">
+      <Helmet>
+        <title>Browse Tasks</title>
+      </Helmet>
       {/* Hero Section */}
       <div className="mb-12 text-center relative overflow-hidden rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 dark:from-green-600 dark:to-emerald-700 py-12 px-6 shadow-xl">
         <div className="absolute inset-0 bg-noise opacity-20 dark:opacity-30"></div>

@@ -6,12 +6,16 @@ import Newsletter from "../components/Newsletter";
 import FeaturedTaskCard from "../components/FeaturedTaskCard";
 import { useLoaderData } from "react-router";
 import SignUpOptions from "../components/SignUpOptions";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const data = useLoaderData();
 
   return (
     <div>
+      <Helmet>
+        <title>WorkNGo | Home</title>
+      </Helmet>
       <BannerSlider />
       <div>
         <HowItWorks />
