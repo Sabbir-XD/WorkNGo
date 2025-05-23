@@ -20,13 +20,17 @@ A dynamic freelance task marketplace platform that connects clients with freelan
 - **Routing:** React Router
 - **Utilities:** React Hot Toast for notifications, Swiper and React Slick for sliders/carousels
 
+## 🛠️ Libraries Used
+- **React Tooltip – Used in the navbar for showing tooltips on the profile icon.
+- **React Simple Typewriter – Used in the banner title to create a typing animation effect.
+
 ## 📸 Screenshots
 
-![alt text](image.png)  
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-4.png)
+![alt text](image.png) 
+
+
+
+
 
 
 
