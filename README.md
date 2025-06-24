@@ -66,6 +66,11 @@ Follow these steps to run the project on your local machine:
    ```bash
    git clone https://github.com/your-username/workngo.git
    cd workngo
+   
+2. Install Dependencies
+
+   npm install
+
 
 
 
