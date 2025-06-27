@@ -47,14 +47,41 @@ const Login = () => {
   const handleGoogle = () => {
     handleGoogleLogin()
       .then((result) => {
-        toast.success("✅ Logged in with Google!");
-        navigate(location?.state || "/");
+        const user = result.user;
+
+        // ✅ Save user to MongoDB
+        const saveUser = {
+          name: user.displayName || "Unknown",
+          email: user.email,
+          photoURL: user.photoURL || "",
+          createdAt: new Date(),
+          role: "user",
+        };
+
+        fetch("https://assaignment-10-server-livid.vercel.app/users", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.inserted) {
+              toast.success("✅Account created via Google!");
+            } else {
+              toast("🟡 Logged in (existing user)");
+            }
+            navigate(location?.state || "/");
+          })
+          .catch((err) => {
+            console.error("MongoDB Save Error:", err);
+          });
       })
       .catch((error) => {
         console.error(error);
         toast.error("❌ Google login failed.");
       });
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-900 flex items-center justify-center p-4">

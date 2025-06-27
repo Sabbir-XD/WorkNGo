@@ -69,7 +69,7 @@ const AddTask = () => {
       data-aos-easing="ease-in-out"
       data-aos-once="false"
       data-aos-offset="100"
-      className="max-w-2xl mx-auto p-4 sm:p-6 mt-5 mb-10 md:mb-10 md:mt-10 bg-green-50 dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-700/50"
+      className="max-w-2xl mx-auto p-4 sm:p-6 mt-5 mb-14 md:mb-10 md:mt-10 bg-green-50 dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-700/50"
     >
       <Helmet>
         <title>WorkNGo | Add Task</title>
