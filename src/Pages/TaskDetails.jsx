@@ -15,7 +15,6 @@ import { Helmet } from "react-helmet";
 const TaskDetails = () => {
   const task = useLoaderData();
   const { user } = useContext(AuthContext);
-  console.log(user);
   const [bidCount, setBidCount] = useState(0);
 
   useEffect(() => {

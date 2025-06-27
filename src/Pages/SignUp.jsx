@@ -66,10 +66,10 @@ const Signup = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("User saved to MongoDB:", data);
+            // console.log("User saved to MongoDB:", data);
           })
           .catch((err) => {
-            console.error("MongoDB save error:", err);
+            // console.error("MongoDB save error:", err);
           });
 
         Swal.fire({

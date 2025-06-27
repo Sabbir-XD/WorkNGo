@@ -27,29 +27,29 @@ const DashboardOverview = () => {
 
   return (
     <div className="p-6 space-y-6">
-      <h2 className="text-2xl font-semibold">
+      <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
         Welcome, {user?.displayName || "User"}!
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-white shadow rounded-xl p-4 flex items-center gap-4">
+        <div className="bg-white dark:bg-gray-800 shadow rounded-xl p-4 flex items-center gap-4">
           <FaList className="text-blue-600 text-3xl" />
           <div>
-            <p className="text-lg font-medium">Total Tasks</p>
-            <p className="text-xl font-bold">{stats.totalTasks}</p>
+            <p className="text-lg font-medium text-gray-700 dark:text-gray-300">Total Tasks</p>
+            <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.totalTasks}</p>
           </div>
         </div>
-        <div className="bg-white shadow rounded-xl p-4 flex items-center gap-4">
+        <div className="bg-white dark:bg-gray-800 shadow rounded-xl p-4 flex items-center gap-4">
           <FaTasks className="text-green-600 text-3xl" />
           <div>
-            <p className="text-lg font-medium">My Tasks</p>
-            <p className="text-xl font-bold">{stats.myTasks}</p>
+            <p className="text-lg font-medium text-gray-700 dark:text-gray-300">My Tasks</p>
+            <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.myTasks}</p>
           </div>
         </div>
-        <div className="bg-white shadow rounded-xl p-4 flex items-center gap-4">
+        <div className="bg-white dark:bg-gray-800 shadow rounded-xl p-4 flex items-center gap-4">
           <FaUser className="text-purple-600 text-3xl" />
           <div>
-            <p className="text-lg font-medium">Total Users</p>
-            <p className="text-xl font-bold">{stats.users}</p>
+            <p className="text-lg font-medium text-gray-700 dark:text-gray-300">Total Users</p>
+            <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.users}</p>
           </div>
         </div>
       </div>

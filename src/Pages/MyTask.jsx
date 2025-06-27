@@ -26,7 +26,6 @@ const MyTasks = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("all");
   const [selectedTask, setSelectedTask] = useState(null);
-  console.log(selectedTask);
   const [showBidsModal, setShowBidsModal] = useState(false);
 
   useEffect(() => {
