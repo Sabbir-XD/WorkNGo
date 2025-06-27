@@ -82,6 +82,10 @@ const PopularServices = () => {
         </div>
 
         <Swiper
+         data-aos="fade-up"
+         data-aos-duration="1000"
+         data-aos-delay="100"
+         data-aos-once="false"
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={20}
           slidesPerView={1}

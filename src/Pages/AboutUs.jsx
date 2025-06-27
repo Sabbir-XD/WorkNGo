@@ -49,7 +49,14 @@ const AboutUs = () => {
 
         {/* Mission Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div>
+          <div
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            data-aos-offset="100"
+          >
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Our Mission
             </h3>
@@ -64,7 +71,15 @@ const AboutUs = () => {
               building a community where quality work meets fair compensation.
             </p>
           </div>
-          <div className="relative h-80 bg-green-500/10 dark:bg-green-400/10 rounded-xl overflow-hidden">
+          <div
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            data-aos-offset="100"
+            className="relative h-80 bg-green-500/10 dark:bg-green-400/10 rounded-xl overflow-hidden"
+          >
             <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-400 opacity-20"></div>
             <div className="absolute inset-0 flex items-center justify-center">
               <FaHandshake className="text-green-500 text-8xl opacity-70" />
@@ -101,6 +116,10 @@ const AboutUs = () => {
               },
             ].map((item, i) => (
               <div
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="100"
+                data-aos-once="false"
                 key={i}
                 className="feature-card p-6 rounded-xl bg-base-200 dark:bg-neutral-800 hover:bg-green-500/10 dark:hover:bg-green-600/10 transition-all"
               >
@@ -115,7 +134,13 @@ const AboutUs = () => {
         </div>
 
         {/* Team CTA */}
-        <div className="bg-green-500 text-white rounded-xl p-8 text-center">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="100"
+          data-aos-once="false"
+          className="bg-green-500 text-white rounded-xl p-8 text-center"
+        >
           <h3 className="text-2xl font-bold mb-4">
             Join Our Growing Community
           </h3>

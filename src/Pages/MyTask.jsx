@@ -125,8 +125,16 @@ const MyTasks = () => {
   };
 
   return (
-    <div className="p-4 md:p-8 bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-gray-900 min-h-screen">
-       <Helmet>
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1200"
+      data-aos-delay="200"
+      data-aos-easing="ease-in-out"
+      data-aos-once="false"
+      data-aos-offset="100"
+      className="p-4 md:p-8 bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-gray-900 min-h-screen"
+    >
+      <Helmet>
         <title>My Posted Tasks</title>
       </Helmet>
       <div className="max-w-7xl mx-auto">
@@ -466,9 +474,7 @@ const MyTasks = () => {
                           </p>
                         </div>
                       </div>
-                      <button
-                        className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1 rounded"
-                      >
+                      <button className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1 rounded">
                         Contact
                       </button>
                     </div>

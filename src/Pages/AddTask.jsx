@@ -43,29 +43,43 @@ const AddTask = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if(data.insertedId){
+        if (data.insertedId) {
           Swal.fire({
-              title: "Tasks Added Successfully!",
-              icon: "success",
-              draggable: true,
-              timer: 2000,
-              background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#fff',
-              color: document.documentElement.classList.contains('dark') ? '#fff' : '#000',
-            });
+            title: "Tasks Added Successfully!",
+            icon: "success",
+            draggable: true,
+            timer: 2000,
+            background: document.documentElement.classList.contains("dark")
+              ? "#1f2937"
+              : "#fff",
+            color: document.documentElement.classList.contains("dark")
+              ? "#fff"
+              : "#000",
+          });
           form.reset();
         }
       });
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4 sm:p-6 mt-5 mb-5 md:mb-10 md:mt-10 bg-green-50 dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-700/50">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1200"
+      data-aos-delay="200"
+      data-aos-easing="ease-in-out"
+      data-aos-once="false"
+      data-aos-offset="100"
+      className="max-w-2xl mx-auto p-4 sm:p-6 mt-5 mb-5 md:mb-10 md:mt-10 bg-green-50 dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-700/50"
+    >
       <Helmet>
         <title>WorkNGo | Add Task</title>
       </Helmet>
       {/* Header */}
       <div className="flex items-center mb-6">
         <HiOutlineClipboardList className="text-emerald-600 dark:text-emerald-400 text-3xl mr-3" />
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Post a New Task</h2>
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+          Post a New Task
+        </h2>
       </div>
 
       <form onSubmit={handleAddTasks} className="space-y-5">
@@ -161,7 +175,7 @@ const AddTask = () => {
             <input
               type="text"
               name="userName"
-              value={user?.displayName || ''}
+              value={user?.displayName || ""}
               readOnly
               className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-600 rounded-lg text-gray-700 dark:text-gray-300"
             />
@@ -173,7 +187,7 @@ const AddTask = () => {
             <input
               type="email"
               name="userEmail"
-              value={user?.email || ''}
+              value={user?.email || ""}
               readOnly
               className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-600 rounded-lg text-gray-700 dark:text-gray-300"
             />

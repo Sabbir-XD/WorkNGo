@@ -32,14 +32,20 @@ const Home = () => {
             Find the right freelancer for your task in minutes.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1200"
+          data-aos-delay="200"
+          data-aos-once="false"
+          className="grid sm:grid-cols-2 md:grid-cols-3 gap-5"
+        >
           {data.map((task, index) => (
             <FeaturedTaskCard key={index} task={task} />
           ))}
         </div>
       </div>
       <PopularServices />
-      <SignUpOptions/>
+      <SignUpOptions />
       <Newsletter />
     </div>
   );

@@ -14,7 +14,8 @@ const DashboardOverview = () => {
     const fetchStats = async () => {
       try {
         const res = await fetch(
-          "https://assaignment-10-server-livid.vercel.app/dashboard-stats?email=" + user?.email
+          "https://assaignment-10-server-livid.vercel.app/dashboard-stats?email=" +
+            user?.email
         );
         const data = await res.json();
         setStats(data);
@@ -26,7 +27,15 @@ const DashboardOverview = () => {
   }, [user?.email]);
 
   return (
-    <div className="p-6 space-y-6">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1200"
+      data-aos-delay="200" 
+      data-aos-easing="ease-in-out" 
+      data-aos-once="false" 
+      data-aos-offset="100"
+      className="p-6 space-y-6"
+    >
       <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
         Welcome, {user?.displayName || "User"}!
       </h2>
@@ -34,22 +43,34 @@ const DashboardOverview = () => {
         <div className="bg-white dark:bg-gray-800 shadow rounded-xl p-4 flex items-center gap-4">
           <FaList className="text-blue-600 text-3xl" />
           <div>
-            <p className="text-lg font-medium text-gray-700 dark:text-gray-300">Total Tasks</p>
-            <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.totalTasks}</p>
+            <p className="text-lg font-medium text-gray-700 dark:text-gray-300">
+              Total Tasks
+            </p>
+            <p className="text-xl font-bold text-gray-900 dark:text-white">
+              {stats.totalTasks}
+            </p>
           </div>
         </div>
         <div className="bg-white dark:bg-gray-800 shadow rounded-xl p-4 flex items-center gap-4">
           <FaTasks className="text-green-600 text-3xl" />
           <div>
-            <p className="text-lg font-medium text-gray-700 dark:text-gray-300">My Tasks</p>
-            <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.myTasks}</p>
+            <p className="text-lg font-medium text-gray-700 dark:text-gray-300">
+              My Tasks
+            </p>
+            <p className="text-xl font-bold text-gray-900 dark:text-white">
+              {stats.myTasks}
+            </p>
           </div>
         </div>
         <div className="bg-white dark:bg-gray-800 shadow rounded-xl p-4 flex items-center gap-4">
           <FaUser className="text-purple-600 text-3xl" />
           <div>
-            <p className="text-lg font-medium text-gray-700 dark:text-gray-300">Total Users</p>
-            <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.users}</p>
+            <p className="text-lg font-medium text-gray-700 dark:text-gray-300">
+              Total Users
+            </p>
+            <p className="text-xl font-bold text-gray-900 dark:text-white">
+              {stats.users}
+            </p>
           </div>
         </div>
       </div>

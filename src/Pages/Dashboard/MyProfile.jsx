@@ -10,7 +10,15 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1200" // 1.2s animation time
+      data-aos-delay="200" // 200ms delay before start
+      data-aos-easing="ease-in-out" // smooth zoom-in
+      data-aos-once="false" // scroll করলে বারবার animate হবে
+      data-aos-offset="100"
+      className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8"
+    >
       <div className="max-w-5xl mx-auto">
         {/* Profile Card */}
         <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
