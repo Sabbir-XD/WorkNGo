@@ -284,7 +284,7 @@ const MyTasks = () => {
                         </td>
                         <td className="px-6 py-4 text-right space-x-2">
                           <Link
-                            to={`/update-task/${task._id}`}
+                            to={`/dashboard/update-task/${task._id}`}
                             className="inline-flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 dark:bg-emerald-700 dark:hover:bg-emerald-600 text-emerald-800 dark:text-white w-9 h-9 rounded-lg transition-colors"
                             title="Edit Task"
                           >

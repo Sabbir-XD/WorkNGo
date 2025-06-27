@@ -16,11 +16,17 @@ import toast from "react-hot-toast";
 import { Helmet } from "react-helmet";
 
 const Signup = () => {
-  const { handleCreateUser, handleGoogleLogin, handleUpdateProfile, setUser, setLoading } =
-    useContext(AuthContext);
+  const {
+    handleCreateUser,
+    handleGoogleLogin,
+    handleUpdateProfile,
+    setUser,
+    setLoading,
+  } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,6 +49,28 @@ const Signup = () => {
 
         handleUpdateProfile({ displayName: name, photoURL: photo });
         setUser({ ...user, displayName: name, photoURL: photo });
+
+        // ✅ Save user to MongoDB
+        const saveUser = {
+          name,
+          email,
+          photoURL: photo || "",
+          createdAt: new Date(),
+          role: "user",
+        };
+
+        fetch("https://assaignment-10-server-livid.vercel.app/users", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("User saved to MongoDB:", data);
+          })
+          .catch((err) => {
+            console.error("MongoDB save error:", err);
+          });
 
         Swal.fire({
           title: "Account Created Successfully!",
@@ -72,8 +100,33 @@ const Signup = () => {
     handleGoogleLogin()
       .then((result) => {
         const user = result.user;
-        toast.success("✅ Logged in with Google!");
-        navigate(location?.state || "/");
+
+        // ✅ Save user to MongoDB
+        const saveUser = {
+          name: user.displayName || "Unknown",
+          email: user.email,
+          photoURL: user.photoURL || "",
+          createdAt: new Date(),
+          role: "user",
+        };
+
+        fetch("https://assaignment-10-server-livid.vercel.app/users", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.inserted) {
+              toast.success("✅Account created via Google!");
+            } else {
+              toast("🟡 Logged in (existing user)");
+            }
+            navigate(location?.state || "/");
+          })
+          .catch((err) => {
+            console.error("MongoDB Save Error:", err);
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -91,7 +144,9 @@ const Signup = () => {
           <h1 className="text-3xl font-bold text-green-700 dark:text-green-400 mb-2">
             Join workNGo
           </h1>
-          <p className="text-gray-600 dark:text-gray-300">Create your account to get started</p>
+          <p className="text-gray-600 dark:text-gray-300">
+            Create your account to get started
+          </p>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-green-100 dark:border-gray-700">
@@ -173,7 +228,8 @@ const Signup = () => {
                 </button>
               </div>
               <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                Use 8 or more characters with a mix of letters, numbers & symbols
+                Use 8 or more characters with a mix of letters, numbers &
+                symbols
               </p>
             </div>
 

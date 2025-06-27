@@ -206,7 +206,7 @@ const BannerSlider = () => {
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={index} className="">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-xl h-[400px] sm:h-[500px] lg:h-[600px] xl:h-[700px]">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-xl h-[400px] sm:h-[500px] lg:h-[400px] xl:h-[500px]">
               {/* Background Image with Overlay */}
               <div className="absolute inset-0">
                 <img

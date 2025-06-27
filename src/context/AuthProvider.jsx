@@ -49,9 +49,19 @@ const AuthProvider = ({ children }) => {
   };
 
   //update profile
-  const handleUpdateProfile = (profileData) => {
+
+  const handleUpdateProfile = async (profileData) => {
     setLoading(true);
-    return updateProfile(auth.currentUser, profileData);
+    try {
+      await updateProfile(auth.currentUser, profileData);
+      setUser({ ...user, ...profileData });
+      return true;
+    } catch (error) {
+      toast.error("Profile update error:", error);
+      return false;
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -75,7 +85,9 @@ const AuthProvider = ({ children }) => {
     setLoading,
     handleUpdateProfile,
   };
-  return <AuthContext value={userInfo}>{children}</AuthContext>;
+  return (
+    <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
