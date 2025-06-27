@@ -1,62 +1,70 @@
 import { FaHandshake, FaRocket, FaUsers, FaLightbulb } from "react-icons/fa";
+import CountUp from "react-countup";
 
 const AboutUs = () => {
   return (
-    <div className="bg-base-100 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-base-100 text-base-content py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
             <span className="block">
               About <span className="text-green-500">WorkNGo</span>
             </span>
           </h2>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-500">
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-500 dark:text-gray-300">
             Connecting talent with opportunity in the fastest growing freelance
             marketplace
           </p>
         </div>
 
         {/* Stats Section */}
-        <div className="bg-green-500/10 rounded-xl p-8 mb-16">
+        <div className="bg-green-500/10 dark:bg-green-400/10 rounded-xl p-8 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="stats-card">
-              <div className="text-4xl font-bold text-green-500">10K+</div>
-              <div className="text-gray-600">Active Freelancers</div>
-            </div>
-            <div className="stats-card">
-              <div className="text-4xl font-bold text-green-500">25K+</div>
-              <div className="text-gray-600">Completed Projects</div>
-            </div>
-            <div className="stats-card">
-              <div className="text-4xl font-bold text-green-500">95%</div>
-              <div className="text-gray-600">Success Rate</div>
-            </div>
-            <div className="stats-card">
-              <div className="text-4xl font-bold text-green-500">5M+</div>
-              <div className="text-gray-600">Earned by Sellers</div>
-            </div>
+            {[
+              { end: 10000, suffix: "+", label: "Active Freelancers" },
+              { end: 25000, suffix: "+", label: "Completed Projects" },
+              { end: 95, suffix: "%", label: "Success Rate" },
+              { end: 5, suffix: "M+", label: "Earned by Sellers" },
+            ].map((stat, idx) => (
+              <div key={idx} className="stats-card">
+                <div className="text-4xl font-bold text-green-500">
+                  <CountUp
+                    suffix={stat.suffix}
+                    start={0}
+                    end={stat.end}
+                    duration={2}
+                    separator=","
+                    scrollSpyDelay={500}
+                    enableScrollSpy
+                  />
+                </div>
+                <div className="text-gray-600 dark:text-gray-300">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Mission Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Our Mission
             </h3>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
               At WorkNGo, we're revolutionizing the way businesses connect with
               freelance talent. Our platform empowers buyers to post tasks
               effortlessly and sellers to bid on work that matches their skills
               perfectly.
             </p>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               We believe in creating opportunities, fostering collaboration, and
               building a community where quality work meets fair compensation.
             </p>
           </div>
-          <div className="relative h-80 bg-green-500/10 rounded-xl overflow-hidden">
+          <div className="relative h-80 bg-green-500/10 dark:bg-green-400/10 rounded-xl overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-400 opacity-20"></div>
             <div className="absolute inset-0 flex items-center justify-center">
               <FaHandshake className="text-green-500 text-8xl opacity-70" />
@@ -66,50 +74,43 @@ const AboutUs = () => {
 
         {/* Features Section */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-12 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-12 text-center">
             Why Choose WorkNGo?
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="feature-card p-6 rounded-xl bg-base-200 hover:bg-green-500/10 transition-all">
-              <div className="text-green-500 mb-4">
-                <FaRocket className="text-3xl" />
+            {[
+              {
+                icon: <FaRocket className="text-3xl" />,
+                title: "Quick Matching",
+                desc: "Our smart algorithm connects buyers with the most suitable sellers in minutes.",
+              },
+              {
+                icon: <FaUsers className="text-3xl" />,
+                title: "Verified Talent",
+                desc: "All sellers undergo rigorous verification to ensure quality and reliability.",
+              },
+              {
+                icon: <FaLightbulb className="text-3xl" />,
+                title: "Diverse Skills",
+                desc: "From design to development, find experts for any task in our extensive network.",
+              },
+              {
+                icon: <FaHandshake className="text-3xl" />,
+                title: "Secure Payments",
+                desc: "Our escrow system ensures payments are only released when work is approved.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="feature-card p-6 rounded-xl bg-base-200 dark:bg-neutral-800 hover:bg-green-500/10 dark:hover:bg-green-600/10 transition-all"
+              >
+                <div className="text-green-500 mb-4">{item.icon}</div>
+                <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                  {item.title}
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300">{item.desc}</p>
               </div>
-              <h4 className="text-lg font-semibold mb-2">Quick Matching</h4>
-              <p className="text-gray-600">
-                Our smart algorithm connects buyers with the most suitable
-                sellers in minutes.
-              </p>
-            </div>
-            <div className="feature-card p-6 rounded-xl bg-base-200 hover:bg-green-500/10 transition-all">
-              <div className="text-green-500 mb-4">
-                <FaUsers className="text-3xl" />
-              </div>
-              <h4 className="text-lg font-semibold mb-2">Verified Talent</h4>
-              <p className="text-gray-600">
-                All sellers undergo rigorous verification to ensure quality and
-                reliability.
-              </p>
-            </div>
-            <div className="feature-card p-6 rounded-xl bg-base-200 hover:bg-green-500/10 transition-all">
-              <div className="text-green-500 mb-4">
-                <FaLightbulb className="text-3xl" />
-              </div>
-              <h4 className="text-lg font-semibold mb-2">Diverse Skills</h4>
-              <p className="text-gray-600">
-                From design to development, find experts for any task in our
-                extensive network.
-              </p>
-            </div>
-            <div className="feature-card p-6 rounded-xl bg-base-200 hover:bg-green-500/10 transition-all">
-              <div className="text-green-500 mb-4">
-                <FaHandshake className="text-3xl" />
-              </div>
-              <h4 className="text-lg font-semibold mb-2">Secure Payments</h4>
-              <p className="text-gray-600">
-                Our escrow system ensures payments are only released when work
-                is approved.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
 
