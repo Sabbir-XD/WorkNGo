@@ -41,19 +41,24 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col md:flex-row">
       {/* Topbar - Mobile */}
-      <div className="md:hidden flex items-center justify-between p-4 bg-white shadow-sm">
+      <div className="md:hidden flex items-center justify-between p-4 bg-white dark:bg-gray-900 shadow-sm">
         <Logo />
         <div className="flex items-center space-x-4">
-          <button className="p-2 rounded-full bg-gray-100 text-gray-600">
+          <button className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
             <FaBell />
           </button>
           <button
             onClick={toggleMobileMenu}
-            className="p-2 rounded-full bg-gray-100 text-gray-600"
+            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
               <path
                 fillRule="evenodd"
                 d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
@@ -66,13 +71,18 @@ const Dashboard = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={toggleMobileMenu}></div>
+        <div
+          className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={toggleMobileMenu}
+        ></div>
       )}
 
       {/* Sidebar */}
       <div
-        className={`fixed md:static z-50 w-64 bg-white shadow-lg md:shadow-none transform transition-transform duration-300 ease-in-out 
-        ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"} h-full`}
+        className={`fixed md:static z-50 w-64 bg-white dark:bg-gray-900 shadow-lg md:shadow-none transform transition-transform duration-300 ease-in-out 
+    ${
+      isMobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+    } h-full`}
       >
         <div className="p-6 h-full flex flex-col">
           <Logo />
@@ -80,104 +90,73 @@ const Dashboard = () => {
             <input
               type="text"
               placeholder="Search..."
-              className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
             />
-            <FaSearch className="absolute left-3 top-3 text-gray-400" />
+            <FaSearch className="absolute left-3 top-3 text-gray-400 dark:text-gray-500" />
           </div>
 
           <nav className="flex-1">
             <ul className="space-y-2">
-              <li>
-                <Link
-                  to="/dashboard"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
-                    activeTab === "dashboard"
-                      ? "bg-green-50 text-green-600 font-medium"
-                      : "text-gray-600 hover:bg-gray-50"
-                  }`}
-                >
-                  <FaHome className="text-lg" />
-                  <span>Dashboard</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/dashboard/profile"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
-                    activeTab === "profile"
-                      ? "bg-green-50 text-green-600 font-medium"
-                      : "text-gray-600 hover:bg-gray-50"
-                  }`}
-                >
-                  <FaUser className="text-lg" />
-                  <span>Profile</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/dashboard/add-task"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
-                    activeTab === "add-task"
-                      ? "bg-green-50 text-green-600 font-medium"
-                      : "text-gray-600 hover:bg-gray-50"
-                  }`}
-                >
-                  <FaPlusCircle className="text-lg" />
-                  <span>Add Task</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/dashboard/my-tasks"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
-                    activeTab === "my-tasks"
-                      ? "bg-green-50 text-green-600 font-medium"
-                      : "text-gray-600 hover:bg-gray-50"
-                  }`}
-                >
-                  <FaClipboardList className="text-lg" />
-                  <span>My Task</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/dashboard/settings"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
-                    activeTab === "settings"
-                      ? "bg-green-50 text-green-600 font-medium"
-                      : "text-gray-600 hover:bg-gray-50"
-                  }`}
-                >
-                  <FaCog className="text-lg" />
-                  <span>Settings</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/dashboard/analytics"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
-                    activeTab === "analytics"
-                      ? "bg-green-50 text-green-600 font-medium"
-                      : "text-gray-600 hover:bg-gray-50"
-                  }`}
-                >
-                  <FaChartLine className="text-lg" />
-                  <span>Analytics</span>
-                </Link>
-              </li>
+              {[
+                {
+                  label: "Dashboard",
+                  icon: FaHome,
+                  path: "/dashboard",
+                  key: "dashboard",
+                },
+                {
+                  label: "Profile",
+                  icon: FaUser,
+                  path: "/dashboard/profile",
+                  key: "profile",
+                },
+                {
+                  label: "Add Task",
+                  icon: FaPlusCircle,
+                  path: "/dashboard/add-task",
+                  key: "add-task",
+                },
+                {
+                  label: "My Task",
+                  icon: FaClipboardList,
+                  path: "/dashboard/my-tasks",
+                  key: "my-tasks",
+                },
+                {
+                  label: "Settings",
+                  icon: FaCog,
+                  path: "/dashboard/settings",
+                  key: "settings",
+                },
+                {
+                  label: "Analytics",
+                  icon: FaChartLine,
+                  path: "/dashboard/analytics",
+                  key: "analytics",
+                },
+              ].map(({ label, icon: Icon, path, key }) => (
+                <li key={key}>
+                  <Link
+                    to={path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
+                      activeTab === key
+                        ? "bg-green-50 dark:bg-green-900 text-green-600 dark:text-green-300 font-medium"
+                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    }`}
+                  >
+                    <Icon className="text-lg" />
+                    <span>{label}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
-          <div className="mt-auto pt-4 border-t border-gray-100">
+          <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
             <button
               onClick={handleSignOut}
-              className="flex items-center space-x-3 p-3 w-full rounded-lg text-gray-600 hover:bg-gray-50"
+              className="flex items-center space-x-3 p-3 w-full rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
             >
               <IoMdLogOut />
               <span>Logout</span>
@@ -189,8 +168,8 @@ const Dashboard = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Topbar - Desktop */}
-        <div className="hidden md:flex items-center justify-between p-4 bg-white shadow-sm">
-          <h2 className="text-xl font-semibold text-gray-800 capitalize">
+        <div className="hidden md:flex items-center justify-between p-4 bg-white dark:bg-gray-900 shadow-sm">
+          <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 capitalize">
             {activeTab.replace(/-/g, " ")}
           </h2>
           <div className="flex items-center space-x-4">
@@ -198,52 +177,75 @@ const Dashboard = () => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="pl-10 pr-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="pl-10 pr-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
-              <FaSearch className="absolute left-3 top-3 text-gray-400" />
+              <FaSearch className="absolute left-3 top-3 text-gray-400 dark:text-gray-500" />
             </div>
-            <button className="p-2 relative rounded-full bg-gray-100 text-gray-600">
+            <button className="p-2 relative rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
               <FaBell />
               <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
-            <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+            <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-800 flex items-center justify-center text-green-600 dark:text-green-300">
               <FaUser />
             </div>
           </div>
         </div>
 
         {/* Content Area */}
-        <div className="flex-1 overflow-auto p-4 md:p-6">
+        <div className="flex-1 overflow-auto p-4 md:p-6 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
           <Outlet />
         </div>
       </div>
 
       {/* Bottom Navigation - Mobile */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around items-center py-3 shadow-lg z-40">
-        <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className={`flex flex-col items-center p-2 rounded-lg ${activeTab === "dashboard" ? "text-green-600" : "text-gray-500"}`}>
-          <FaHome size={18} />
-          <span className="text-xs mt-1">Home</span>
-        </Link>
-        <Link to="/dashboard/profile" onClick={() => setIsMobileMenuOpen(false)} className={`flex flex-col items-center p-2 rounded-lg ${activeTab === "profile" ? "text-green-600" : "text-gray-500"}`}>
-          <FaUser size={18} />
-          <span className="text-xs mt-1">Profile</span>
-        </Link>
-        <Link to="/dashboard/add-task" onClick={() => setIsMobileMenuOpen(false)} className={`flex flex-col items-center p-2 rounded-lg ${activeTab === "add-task" ? "text-green-600" : "text-gray-500"}`}>
-          <FaPlusCircle size={18} />
-          <span className="text-xs mt-1">Add</span>
-        </Link>
-        <Link to="/dashboard/my-tasks" onClick={() => setIsMobileMenuOpen(false)} className={`flex flex-col items-center p-2 rounded-lg ${activeTab === "my-tasks" ? "text-green-600" : "text-gray-500"}`}>
-          <FaClipboardList size={18} />
-          <span className="text-xs mt-1">Tasks</span>
-        </Link>
-        <Link to="/dashboard/analytics" onClick={() => setIsMobileMenuOpen(false)} className={`flex flex-col items-center p-2 rounded-lg ${activeTab === "analytics" ? "text-green-600" : "text-gray-500"}`}>
-          <FaChartLine size={18} />
-          <span className="text-xs mt-1">Stats</span>
-        </Link>
-        <Link to="/dashboard/settings" onClick={() => setIsMobileMenuOpen(false)} className={`flex flex-col items-center p-2 rounded-lg ${activeTab === "settings" ? "text-green-600" : "text-gray-500"}`}>
-          <FaCog size={18} />
-          <span className="text-xs mt-1">Settings</span>
-        </Link>
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 flex justify-around items-center py-3 shadow-lg z-40">
+        {[
+          { icon: FaHome, label: "Home", path: "/dashboard", key: "dashboard" },
+          {
+            icon: FaUser,
+            label: "Profile",
+            path: "/dashboard/profile",
+            key: "profile",
+          },
+          {
+            icon: FaPlusCircle,
+            label: "Add",
+            path: "/dashboard/add-task",
+            key: "add-task",
+          },
+          {
+            icon: FaClipboardList,
+            label: "Tasks",
+            path: "/dashboard/my-tasks",
+            key: "my-tasks",
+          },
+          {
+            icon: FaChartLine,
+            label: "Stats",
+            path: "/dashboard/analytics",
+            key: "analytics",
+          },
+          {
+            icon: FaCog,
+            label: "Settings",
+            path: "/dashboard/settings",
+            key: "settings",
+          },
+        ].map(({ icon: Icon, label, path, key }) => (
+          <Link
+            key={key}
+            to={path}
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`flex flex-col items-center p-2 rounded-lg ${
+              activeTab === key
+                ? "text-green-600 dark:text-green-300"
+                : "text-gray-500 dark:text-gray-400"
+            }`}
+          >
+            <Icon size={18} />
+            <span className="text-xs mt-1">{label}</span>
+          </Link>
+        ))}
       </div>
     </div>
   );

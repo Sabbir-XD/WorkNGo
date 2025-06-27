@@ -1,5 +1,12 @@
-import { FaTwitter, FaFacebookF, FaLinkedinIn, FaEnvelope, FaHeadset } from 'react-icons/fa';
+import {
+  FaTwitter,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaEnvelope,
+  FaHeadset,
+} from "react-icons/fa";
 import logo from "../assets/logo.jpg";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -19,34 +26,61 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-700 dark:text-green-800 text-sm">
-              Connecting skilled freelancers with clients for quick task completion.
+              Connecting skilled freelancers with clients for quick task
+              completion.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-green-800 mb-4">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-green-800 mb-4">
+              Quick Links
+            </h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition">Browse Tasks</a></li>
-              <li><a href="#" className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition">Post a Task</a></li>
-              <li><a href="#" className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition">Freelancer Dashboard</a></li>
-              <li><a href="#" className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition">How It Works</a></li>
+              <li>
+                <Link to="/browse-tasks" className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition">
+                  Browse Tasks
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/add-task" className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition">
+                  Post a Task
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard" className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition">
+                  Freelancer Dashboard
+                </Link>
+              </li>
+              <li>
+                <a href="#works" className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition">
+                  How It Works
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold text-green-800 mb-4">Contact</h4>
+            <h4 className="text-lg font-semibold text-green-800 mb-4">
+              Contact
+            </h4>
             <ul className="space-y-3">
               <li className="flex items-center">
                 <FaEnvelope className="text-gray-600 dark:text-green-800 mr-2" />
-                <a href="mailto:contact@orkngo.com" className="text-gray-600 hover:text-green-800 transition">
-                  contact@orkngo.com
+                <a
+                  href="mailto:contact@orkngo.com"
+                  className="text-gray-600 hover:text-green-800 transition"
+                >
+                  contact@Workngo.com
                 </a>
               </li>
               <li className="flex items-center">
                 <FaHeadset className="text-gray-600 mr-2" />
-                <a href="#" className="text-gray-600 dark:text-green-800 hover:text-green-800 transition">
+                <a
+                  href="#"
+                  className="text-gray-600 dark:text-green-800 hover:text-green-800 transition"
+                >
                   Support Center
                 </a>
               </li>
@@ -55,24 +89,54 @@ const Footer = () => {
 
           {/* Social & Legal */}
           <div>
-            <h4 className="text-lg font-semibold text-green-800 mb-4">Connect With Us</h4>
+            <h4 className="text-lg font-semibold text-green-800 mb-4">
+              Connect With Us
+            </h4>
             <div className="flex space-x-4 mb-6">
-              <a href="#" className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition">
+              <a
+                href="https://x.com/"
+                target="_blank"
+                className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+              >
                 <FaTwitter />
               </a>
-              <a href="#" className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition">
+              <a
+                href="https://www.facebook.com/sabbir.xd.f"
+                target="_blank"
+                className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+              >
                 <FaFacebookF />
               </a>
-              <a href="#" className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition">
+              <a
+                href="https://www.linkedin.com/in/sabbir-xd/"
+                target="_blank"
+                className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+              >
                 <FaLinkedinIn />
               </a>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-green-800 mb-2">Legal</h4>
+              <h4 className="text-lg font-semibold text-green-800 mb-2">
+                Legal
+              </h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition text-sm">Terms of Service</a></li>
-                <li><a href="#" className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition text-sm">Privacy Policy</a></li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition text-sm"
+                  >
+                    Terms of Service
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-600 dark:text-green-800 hover:text-gray-800 transition text-sm"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

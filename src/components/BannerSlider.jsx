@@ -250,6 +250,7 @@ const BannerSlider = () => {
                   {slide.description}
                 </p>
                 <button
+                 
                   className={`group relative z-10 inline-flex items-center gap-3 ${slide.buttonColor} text-white py-3 px-8 sm:py-4 sm:px-10 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg`}
                 >
                   {slide.buttonText}
