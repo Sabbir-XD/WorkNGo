@@ -125,19 +125,19 @@ const MyTasks = () => {
   };
 
   return (
-    <div
-      data-aos="zoom-in"
-      data-aos-duration="1200"
-      data-aos-delay="200"
-      data-aos-easing="ease-in-out"
-      data-aos-once="false"
-      data-aos-offset="100"
-      className="p-4 md:p-8 bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-gray-900 min-h-screen"
-    >
+    <div className="p-4 md:p-8 bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-gray-900 min-h-screen">
       <Helmet>
         <title>My Posted Tasks</title>
       </Helmet>
-      <div className="max-w-7xl mx-auto">
+      <div
+        data-aos="zoom-in"
+        data-aos-duration="1200"
+        data-aos-delay="200"
+        data-aos-easing="ease-in-out"
+        data-aos-once="false"
+        data-aos-offset="100"
+        className="max-w-7xl mx-auto"
+      >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div className="flex items-center">
             <div className="bg-emerald-100 dark:bg-emerald-900 p-3 rounded-xl mr-4 shadow-md flex items-center justify-center">
